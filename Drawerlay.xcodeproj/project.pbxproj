@@ -12,6 +12,8 @@
 		7A69441C27149AEB009DB1BB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69441B27149AEB009DB1BB /* main.swift */; };
 		7A6944202714A748009DB1BB /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69441F2714A748009DB1BB /* DrawViewController.swift */; };
 		7A773BCF2714C77600697D14 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A773BCE2714C77600697D14 /* DrawView.swift */; };
+		AE0C423FEF1CC69763A92346 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C4463E52394F388D39791 /* Parameters.swift */; };
+		AE0C42FCB8F2F66B47E824C2 /* ParamMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C444703368C0FB0E2C354 /* ParamMenuItem.swift */; };
 		AE0C45077AEA2E4E33CAA982 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C4C301E883B17471458E5 /* PanelController.swift */; };
 		AE0C4E9E3ACB546674BF2FC4 /* HotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C4CBD1A25156DCE484BB4 /* HotKeyManager.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +26,8 @@
 		7A69441B27149AEB009DB1BB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7A69441F2714A748009DB1BB /* DrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		7A773BCE2714C77600697D14 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		AE0C444703368C0FB0E2C354 /* ParamMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamMenuItem.swift; sourceTree = "<group>"; };
+		AE0C4463E52394F388D39791 /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
 		AE0C4C301E883B17471458E5 /* PanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelController.swift; sourceTree = "<group>"; };
 		AE0C4CBD1A25156DCE484BB4 /* HotKeyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +70,8 @@
 				7A773BCE2714C77600697D14 /* DrawView.swift */,
 				AE0C4C301E883B17471458E5 /* PanelController.swift */,
 				AE0C4CBD1A25156DCE484BB4 /* HotKeyManager.swift */,
+				AE0C4463E52394F388D39791 /* Parameters.swift */,
+				AE0C444703368C0FB0E2C354 /* ParamMenuItem.swift */,
 			);
 			path = Drawerlay;
 			sourceTree = "<group>";
@@ -144,6 +150,8 @@
 				7A69441C27149AEB009DB1BB /* main.swift in Sources */,
 				AE0C45077AEA2E4E33CAA982 /* PanelController.swift in Sources */,
 				AE0C4E9E3ACB546674BF2FC4 /* HotKeyManager.swift in Sources */,
+				AE0C423FEF1CC69763A92346 /* Parameters.swift in Sources */,
+				AE0C42FCB8F2F66B47E824C2 /* ParamMenuItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

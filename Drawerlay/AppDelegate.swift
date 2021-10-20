@@ -50,6 +50,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         panelController.clear()
     }
 
+    @objc func colorSelector(sender: ParamMenuItem) {
+        if let color = sender.param as? NSColor {
+            panelController.setColor(color)
+            statusBarController.setActiveColor(item: sender)
+        }
+    }
+
+    @objc func lineWidthSelector(sender: ParamMenuItem) {
+        if let lineWidth = sender.param as? CGFloat {
+            panelController.setLineWidth(lineWidth)
+            statusBarController.setActiveLineWidth(item: sender)
+        }
+    }
+
+    @objc func timeoutSelector(sender: ParamMenuItem) {
+        if let timeout = sender.param as? TimeInterval {
+            panelController.setTimeout(timeout)
+            statusBarController.setActiveTimeout(item: sender)
+        }
+    }
+
     @objc func showAboutWindow() {
         NSApp.orderFrontStandardAboutPanel()
         NSApp.activate(ignoringOtherApps: true)

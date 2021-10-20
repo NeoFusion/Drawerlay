@@ -39,4 +39,22 @@ class PanelController {
             viewController.clear()
         }
     }
+
+    func setColor(_ color: NSColor) {
+        if let viewController = panel.contentViewController as? DrawViewController {
+            viewController.setColor(color)
+        }
+    }
+
+    func setLineWidth(_ lineWidth: CGFloat) {
+        if let viewController = panel.contentViewController as? DrawViewController {
+            viewController.setLineWidth(lineWidth)
+        }
+    }
+
+    func setTimeout(_ timeout: TimeInterval) {
+        if let viewController = panel.contentViewController as? DrawViewController {
+            viewController.setTimeout(timeout)
+        }
+    }
 }
