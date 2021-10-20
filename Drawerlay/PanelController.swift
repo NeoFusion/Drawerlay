@@ -17,18 +17,21 @@ class PanelController {
         panel.contentViewController = DrawViewController()
     }
 
-    func isActive() -> Bool {
-        !panel.ignoresMouseEvents
-    }
-
     func enable() {
-        panel.ignoresMouseEvents = false
         panel.orderFrontRegardless()
     }
 
     func disable() {
         panel.ignoresMouseEvents = true
         panel.close()
+    }
+
+    func activate() {
+        panel.ignoresMouseEvents = false
+    }
+
+    func deactivate() {
+        panel.ignoresMouseEvents = true
     }
 
     func clear() {
