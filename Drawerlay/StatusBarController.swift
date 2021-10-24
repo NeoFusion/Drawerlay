@@ -24,9 +24,6 @@ class StatusBarController {
         for (title, value) in Parameters.colors {
             let menuItem = ParamMenuItem(title: title, action: #selector(AppDelegate.colorSelector), keyEquivalent: "")
             menuItem.param = value
-            if value == Parameters.defaultColor {
-                menuItem.setStateOn()
-            }
             colorMenu.addItem(menuItem)
         }
         let colorMenuItem = NSMenuItem(title: "Color", action: nil, keyEquivalent: "")
@@ -37,9 +34,6 @@ class StatusBarController {
         for (title, value) in Parameters.lineWidths {
             let menuItem = ParamMenuItem(title: title, action: #selector(AppDelegate.lineWidthSelector), keyEquivalent: "")
             menuItem.param = value
-            if value == Parameters.defaultLineWidth {
-                menuItem.setStateOn()
-            }
             lineWidthMenu.addItem(menuItem)
         }
         let lineWidthMenuItem = NSMenuItem(title: "Line width", action: nil, keyEquivalent: "")
@@ -50,9 +44,6 @@ class StatusBarController {
         for (title, value) in Parameters.timeouts {
             let menuItem = ParamMenuItem(title: title, action: #selector(AppDelegate.timeoutSelector), keyEquivalent: "")
             menuItem.param = value
-            if value == Parameters.defaultTimeout {
-                menuItem.setStateOn()
-            }
             timeoutMenu.addItem(menuItem)
         }
         let timeoutMenuItem = NSMenuItem(title: "Timeout", action: nil, keyEquivalent: "")
@@ -86,6 +77,16 @@ class StatusBarController {
         }
     }
 
+    func setActiveColor(color: NSColor) {
+        for menuItem in colorMenu.items as! [ParamMenuItem] {
+            if menuItem.param as! NSColor == color {
+                menuItem.setStateOn()
+            } else {
+                menuItem.setStateOff()
+            }
+        }
+    }
+
     func setActiveLineWidth(item: NSMenuItem) {
         for menuItem in lineWidthMenu.items {
             if menuItem == item {
@@ -96,9 +97,29 @@ class StatusBarController {
         }
     }
 
+    func setActiveLineWidth(lineWidth: CGFloat) {
+        for menuItem in lineWidthMenu.items as! [ParamMenuItem] {
+            if menuItem.param as! CGFloat == lineWidth {
+                menuItem.setStateOn()
+            } else {
+                menuItem.setStateOff()
+            }
+        }
+    }
+
     func setActiveTimeout(item: NSMenuItem) {
         for menuItem in timeoutMenu.items {
             if menuItem == item {
+                menuItem.setStateOn()
+            } else {
+                menuItem.setStateOff()
+            }
+        }
+    }
+
+    func setActiveTimeout(timeout: TimeInterval) {
+        for menuItem in timeoutMenu.items as! [ParamMenuItem] {
+            if menuItem.param as! TimeInterval == timeout {
                 menuItem.setStateOn()
             } else {
                 menuItem.setStateOff()
