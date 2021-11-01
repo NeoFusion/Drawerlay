@@ -7,6 +7,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var panelController: PanelController!
     private var active = false
     private var currentParams: Dictionary = [String:Any]()
+    private var hotKeyWindowController: HotKeyWindowController?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         statusBarController = StatusBarController()
@@ -26,6 +27,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func loadUserDefaults() {
+        if let hotKeyCode = defaults.value(forKey: Parameters.hotKeyCodeKey) as? UInt32,
+           let hotKeyModifiers = defaults.value(forKey: Parameters.hotKeyModifiersKey) as? UInt32
+        {
+            setHotKey(HotKey(code: hotKeyCode, modifiers: hotKeyModifiers))
+        } else {
+            defaults.set(Parameters.defaultHotKey.code, forKey: Parameters.hotKeyCodeKey)
+            defaults.set(Parameters.defaultHotKey.modifiers, forKey: Parameters.hotKeyModifiersKey)
+            setHotKey(Parameters.defaultHotKey)
+        }
         if let colorName = defaults.value(forKey: Parameters.colorKey) as? String,
            let colorIndex = Parameters.colors.firstIndex(where: { $0.key == colorName })
         {
@@ -67,8 +77,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    private func setHotKey(_ hotKey: HotKey) {
+        currentParams[Parameters.hotKeyCodeKey] = hotKey.code
+        currentParams[Parameters.hotKeyModifiersKey] = hotKey.modifiers
+        statusBarController.setHotKeyInfo(
+                CarbonKeys.getKeyModifiers(hotKey.modifiers) + CarbonKeys.getKey(hotKey.code)
+        )
+        HotKeyManager.setHotKey(hotKey)
+    }
+
     private func activateHotKey() {
-        HotKeyManager.registerHotKey(hotKeyCode: UInt32(kVK_ISO_Section), hotKeyModifiers: UInt32(cmdKey))
+        HotKeyManager.registerHotKey()
         HotKeyManager.installEventHandler()
     }
 
@@ -125,6 +144,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc func showAboutWindow() {
         NSApp.orderFrontStandardAboutPanel()
+        NSApp.activate(ignoringOtherApps: true)
+    }
+
+    @objc func showChangeHotkeyWindow() {
+        if hotKeyWindowController == nil {
+            let window = NSWindow(
+                    contentRect: NSRect(x: 0, y: 0, width: 250, height: 150),
+                    styleMask: [.titled, .closable],
+                    backing: .buffered,
+                    defer: false
+            )
+            window.center()
+            let hotKeyViewController = HotKeyViewController()
+            hotKeyViewController.setHotKeyTextField(
+                    CarbonKeys.getKeyModifiers(currentParams[Parameters.hotKeyModifiersKey] as! UInt32)
+                            + CarbonKeys.getKey(currentParams[Parameters.hotKeyCodeKey] as! UInt32)
+            )
+            hotKeyViewController.onHotKeyUpdate = setHotKey
+            window.contentViewController = hotKeyViewController
+            hotKeyWindowController = HotKeyWindowController(window: window)
+        }
+        hotKeyWindowController?.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
 }

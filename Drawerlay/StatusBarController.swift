@@ -4,6 +4,7 @@ class StatusBarController {
     private let statusBar: NSStatusBar
     private let statusBarItem: NSStatusItem
     private let stateMenuItem: NSMenuItem
+    private let hotKeyInfoMenu: NSMenuItem
     private let colorMenu: NSMenu
     private let lineWidthMenu: NSMenu
     private let timeoutMenu: NSMenu
@@ -18,6 +19,11 @@ class StatusBarController {
         statusBarMenu.addItem(stateMenuItem)
         statusBarMenu.addItem(NSMenuItem.separator())
         statusBarMenu.addItem(NSMenuItem(title: "Clear", action: #selector(AppDelegate.clear), keyEquivalent: ""))
+        statusBarMenu.addItem(NSMenuItem.separator())
+        hotKeyInfoMenu = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+        hotKeyInfoMenu.isHidden = true
+        statusBarMenu.addItem(hotKeyInfoMenu)
+        statusBarMenu.addItem(NSMenuItem(title: "Change…", action: #selector(AppDelegate.showChangeHotkeyWindow), keyEquivalent: ""))
         statusBarMenu.addItem(NSMenuItem.separator())
 
         colorMenu = NSMenu()
@@ -65,6 +71,11 @@ class StatusBarController {
     func setDisabledState() {
         stateMenuItem.title = "Enable"
         stateMenuItem.setStateOff()
+    }
+
+    func setHotKeyInfo(_ hotKey: String) {
+        hotKeyInfoMenu.title = "Draw hotkey: " + hotKey
+        hotKeyInfoMenu.isHidden = false
     }
 
     func setActiveColor(item: NSMenuItem) {

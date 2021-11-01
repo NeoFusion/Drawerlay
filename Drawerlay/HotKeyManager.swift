@@ -6,6 +6,8 @@ final class HotKeyManager {
             id: 0
     )
 
+    private static var hotKey = HotKey(code: 0, modifiers: 0)
+
     private static var eventHotKey: EventHotKeyRef?
     private static var eventHandler: EventHandlerRef?
 
@@ -19,10 +21,14 @@ final class HotKeyManager {
         self.onKeyReleased = onKeyReleased
     }
 
-    static func registerHotKey(hotKeyCode: UInt32, hotKeyModifiers: UInt32 = 0) {
+    static func setHotKey(_ hotKey: HotKey) {
+        HotKeyManager.hotKey = hotKey
+    }
+
+    static func registerHotKey() {
         let error = RegisterEventHotKey(
-                hotKeyCode,
-                hotKeyModifiers,
+                hotKey.code,
+                hotKey.modifiers,
                 hotKeyID,
                 GetEventDispatcherTarget(),
                 0,

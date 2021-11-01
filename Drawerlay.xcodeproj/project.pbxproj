@@ -12,9 +12,13 @@
 		7A69441C27149AEB009DB1BB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69441B27149AEB009DB1BB /* main.swift */; };
 		7A6944202714A748009DB1BB /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69441F2714A748009DB1BB /* DrawViewController.swift */; };
 		7A773BCF2714C77600697D14 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A773BCE2714C77600697D14 /* DrawView.swift */; };
+		AE0C41055ADEFBB91A73018B /* CarbonKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C4126D4386047C19F3C42 /* CarbonKeys.swift */; };
 		AE0C423FEF1CC69763A92346 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C4463E52394F388D39791 /* Parameters.swift */; };
 		AE0C42FCB8F2F66B47E824C2 /* ParamMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C444703368C0FB0E2C354 /* ParamMenuItem.swift */; };
+		AE0C42FDB507D3B37CAFEAD9 /* HotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C420BAE8F7BFD35E70B3F /* HotKey.swift */; };
 		AE0C45077AEA2E4E33CAA982 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C4C301E883B17471458E5 /* PanelController.swift */; };
+		AE0C4905B4113B4C048E4D26 /* HotKeyWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C4235D3D1D2CC2FE5483B /* HotKeyWindowController.swift */; };
+		AE0C4D064BD2D9704F230476 /* HotKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C431BE5CB2737030902B0 /* HotKeyViewController.swift */; };
 		AE0C4E9E3ACB546674BF2FC4 /* HotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C4CBD1A25156DCE484BB4 /* HotKeyManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +30,10 @@
 		7A69441B27149AEB009DB1BB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7A69441F2714A748009DB1BB /* DrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		7A773BCE2714C77600697D14 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		AE0C4126D4386047C19F3C42 /* CarbonKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarbonKeys.swift; sourceTree = "<group>"; };
+		AE0C420BAE8F7BFD35E70B3F /* HotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
+		AE0C4235D3D1D2CC2FE5483B /* HotKeyWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyWindowController.swift; sourceTree = "<group>"; };
+		AE0C431BE5CB2737030902B0 /* HotKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyViewController.swift; sourceTree = "<group>"; };
 		AE0C444703368C0FB0E2C354 /* ParamMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamMenuItem.swift; sourceTree = "<group>"; };
 		AE0C4463E52394F388D39791 /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
 		AE0C4C301E883B17471458E5 /* PanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelController.swift; sourceTree = "<group>"; };
@@ -72,6 +80,10 @@
 				AE0C4CBD1A25156DCE484BB4 /* HotKeyManager.swift */,
 				AE0C4463E52394F388D39791 /* Parameters.swift */,
 				AE0C444703368C0FB0E2C354 /* ParamMenuItem.swift */,
+				AE0C431BE5CB2737030902B0 /* HotKeyViewController.swift */,
+				AE0C4235D3D1D2CC2FE5483B /* HotKeyWindowController.swift */,
+				AE0C4126D4386047C19F3C42 /* CarbonKeys.swift */,
+				AE0C420BAE8F7BFD35E70B3F /* HotKey.swift */,
 			);
 			path = Drawerlay;
 			sourceTree = "<group>";
@@ -152,6 +164,10 @@
 				AE0C4E9E3ACB546674BF2FC4 /* HotKeyManager.swift in Sources */,
 				AE0C423FEF1CC69763A92346 /* Parameters.swift in Sources */,
 				AE0C42FCB8F2F66B47E824C2 /* ParamMenuItem.swift in Sources */,
+				AE0C4D064BD2D9704F230476 /* HotKeyViewController.swift in Sources */,
+				AE0C4905B4113B4C048E4D26 /* HotKeyWindowController.swift in Sources */,
+				AE0C41055ADEFBB91A73018B /* CarbonKeys.swift in Sources */,
+				AE0C42FDB507D3B37CAFEAD9 /* HotKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

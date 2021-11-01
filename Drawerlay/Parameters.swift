@@ -1,6 +1,11 @@
 import AppKit
+import Carbon
 
 struct Parameters {
+    static let hotKeyCodeKey = "drawHotKeyCode"
+    static let hotKeyModifiersKey = "drawHotKeyModifiers"
+    static let defaultHotKey = HotKey(code: UInt32(kVK_ISO_Section), modifiers: UInt32(cmdKey))
+
     static let colors: KeyValuePairs<String, NSColor> = [
         "Black": NSColor.black,
         "Green": NSColor.green,
