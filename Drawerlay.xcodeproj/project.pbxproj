@@ -12,6 +12,7 @@
 		7A69441C27149AEB009DB1BB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69441B27149AEB009DB1BB /* main.swift */; };
 		7A6944202714A748009DB1BB /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69441F2714A748009DB1BB /* DrawViewController.swift */; };
 		7A773BCF2714C77600697D14 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A773BCE2714C77600697D14 /* DrawView.swift */; };
+		7AAEA9C927A34212002019E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AAEA9C827A34212002019E5 /* Images.xcassets */; };
 		AE0C41055ADEFBB91A73018B /* CarbonKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C4126D4386047C19F3C42 /* CarbonKeys.swift */; };
 		AE0C423FEF1CC69763A92346 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C4463E52394F388D39791 /* Parameters.swift */; };
 		AE0C42FCB8F2F66B47E824C2 /* ParamMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C444703368C0FB0E2C354 /* ParamMenuItem.swift */; };
@@ -30,6 +31,7 @@
 		7A69441B27149AEB009DB1BB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7A69441F2714A748009DB1BB /* DrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		7A773BCE2714C77600697D14 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		7AAEA9C827A34212002019E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AE0C4126D4386047C19F3C42 /* CarbonKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarbonKeys.swift; sourceTree = "<group>"; };
 		AE0C420BAE8F7BFD35E70B3F /* HotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
 		AE0C4235D3D1D2CC2FE5483B /* HotKeyWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyWindowController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				AE0C4235D3D1D2CC2FE5483B /* HotKeyWindowController.swift */,
 				AE0C4126D4386047C19F3C42 /* CarbonKeys.swift */,
 				AE0C420BAE8F7BFD35E70B3F /* HotKey.swift */,
+				7AAEA9C827A34212002019E5 /* Images.xcassets */,
 			);
 			path = Drawerlay;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AAEA9C927A34212002019E5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +296,7 @@
 		7A694411271496C2009DB1BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_PREVIEWS = YES;
@@ -310,6 +315,7 @@
 		7A694412271496C2009DB1BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_PREVIEWS = YES;
