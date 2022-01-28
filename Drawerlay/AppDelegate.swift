@@ -164,6 +164,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             hotKeyViewController.onHotKeyUpdate = setHotKey
             window.contentViewController = hotKeyViewController
             hotKeyWindowController = HotKeyWindowController(window: window)
+            window.delegate = hotKeyWindowController
         }
         hotKeyWindowController?.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)

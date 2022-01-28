@@ -1,6 +1,6 @@
 import AppKit
 
-class HotKeyWindowController: NSWindowController {
+class HotKeyWindowController: NSWindowController, NSWindowDelegate {
     override func keyDown(with event: NSEvent) {
         if let controller = contentViewController as? HotKeyViewController {
             if controller.listening {
@@ -10,6 +10,12 @@ class HotKeyWindowController: NSWindowController {
                         flags: event.modifierFlags
                 )
             }
+        }
+    }
+
+    func windowDidResignKey(_ notification: Notification) {
+        if let controller = contentViewController as? HotKeyViewController {
+            controller.listening = false
         }
     }
 }
