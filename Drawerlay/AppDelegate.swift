@@ -4,19 +4,19 @@ import Carbon
 class AppDelegate: NSObject, NSApplicationDelegate {
     private let defaults = UserDefaults.standard
     private var statusBarController: StatusBarController!
-    private var panelController: PanelController!
+    private var screenController: ScreenController!
     private var active = false
     private var currentParams: Dictionary = [String:Any]()
     private var hotKeyWindowController: HotKeyWindowController?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         statusBarController = StatusBarController()
-        panelController = PanelController()
+        let parameters = loadUserDefaults()
+        screenController = ScreenController(parameters)
         HotKeyManager.registerHandlers(
-                onKeyPressed: panelController.activate,
-                onKeyReleased: panelController.deactivate
+                onKeyPressed: screenController.activate,
+                onKeyReleased: screenController.deactivate
         )
-        loadUserDefaults()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -26,7 +26,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         saveUserDefaults()
     }
 
-    private func loadUserDefaults() {
+    private func loadUserDefaults() -> PanelParameters {
+        var parameters = PanelParameters(
+                color: Parameters.defaultColor,
+                lineWidth: Parameters.defaultLineWidth,
+                timeout: Parameters.defaultTimeout
+        )
         if let hotKeyCode = defaults.value(forKey: Parameters.hotKeyCodeKey) as? UInt32,
            let hotKeyModifiers = defaults.value(forKey: Parameters.hotKeyModifiersKey) as? UInt32
         {
@@ -41,34 +46,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
             let color = Parameters.colors[colorIndex].value
             currentParams[Parameters.colorKey] = colorName
-            panelController.setColor(color)
+            parameters.color = color
             statusBarController.setActiveColor(color: color)
         } else {
             defaults.set(Parameters.defaultColorName, forKey: Parameters.colorKey)
             currentParams[Parameters.colorKey] = Parameters.defaultColorName
-            panelController.setColor(Parameters.defaultColor)
             statusBarController.setActiveColor(color: Parameters.defaultColor)
         }
         if let lineWidth = defaults.value(forKey: Parameters.lineWidthKey) as? CGFloat {
             currentParams[Parameters.lineWidthKey] = lineWidth
-            panelController.setLineWidth(lineWidth)
+            parameters.lineWidth = lineWidth
             statusBarController.setActiveLineWidth(lineWidth: lineWidth)
         } else {
             defaults.set(Parameters.defaultLineWidth, forKey: Parameters.lineWidthKey)
             currentParams[Parameters.lineWidthKey] = Parameters.defaultLineWidth
-            panelController.setLineWidth(Parameters.defaultLineWidth)
             statusBarController.setActiveLineWidth(lineWidth: Parameters.defaultLineWidth)
         }
         if let timeout = defaults.value(forKey: Parameters.timeoutKey) as? TimeInterval {
             currentParams[Parameters.timeoutKey] = timeout
-            panelController.setTimeout(timeout)
+            parameters.timeout = timeout
             statusBarController.setActiveTimeout(timeout: timeout)
         } else {
             defaults.set(Parameters.defaultTimeout, forKey: "timeout")
             currentParams[Parameters.timeoutKey] = Parameters.defaultTimeout
-            panelController.setTimeout(Parameters.defaultTimeout)
             statusBarController.setActiveTimeout(timeout: Parameters.defaultTimeout)
         }
+        return parameters
     }
 
     private func saveUserDefaults() {
@@ -99,12 +102,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func togglePanel() {
         if active {
             deactivateHotKey()
-            panelController.clear()
-            panelController.disable()
+            screenController.clear()
+            screenController.disable()
             statusBarController.setDisabledState()
             active = false
         } else {
-            panelController.enable()
+            screenController.enable()
             activateHotKey()
             statusBarController.setEnabledState()
             active = true
@@ -112,7 +115,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func clear() {
-        panelController.clear()
+        screenController.clear()
     }
 
     @objc func colorSelector(sender: ParamMenuItem) {
@@ -121,7 +124,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
             let colorName = Parameters.colors[colorIndex].key
             currentParams[Parameters.colorKey] = colorName
-            panelController.setColor(color)
+            screenController.setColor(color)
             statusBarController.setActiveColor(item: sender)
         }
     }
@@ -129,7 +132,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func lineWidthSelector(sender: ParamMenuItem) {
         if let lineWidth = sender.param as? CGFloat {
             currentParams[Parameters.lineWidthKey] = lineWidth
-            panelController.setLineWidth(lineWidth)
+            screenController.setLineWidth(lineWidth)
             statusBarController.setActiveLineWidth(item: sender)
         }
     }
@@ -137,7 +140,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func timeoutSelector(sender: ParamMenuItem) {
         if let timeout = sender.param as? TimeInterval {
             currentParams[Parameters.timeoutKey] = timeout
-            panelController.setTimeout(timeout)
+            screenController.setTimeout(timeout)
             statusBarController.setActiveTimeout(item: sender)
         }
     }

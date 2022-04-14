@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A3A793828086FF300F784A7 /* ScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3A793728086FF300F784A7 /* ScreenController.swift */; };
+		7A414208280876F300BAE724 /* PanelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A414207280876F300BAE724 /* PanelProtocol.swift */; };
 		7A694401271496C1009DB1BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694400271496C1009DB1BB /* AppDelegate.swift */; };
 		7A69441527149717009DB1BB /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69441427149717009DB1BB /* StatusBarController.swift */; };
 		7A69441C27149AEB009DB1BB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69441B27149AEB009DB1BB /* main.swift */; };
 		7A6944202714A748009DB1BB /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69441F2714A748009DB1BB /* DrawViewController.swift */; };
 		7A773BCF2714C77600697D14 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A773BCE2714C77600697D14 /* DrawView.swift */; };
 		7AAEA9C927A34212002019E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AAEA9C827A34212002019E5 /* Images.xcassets */; };
+		7ABEE02828088DC7006EDF3F /* PanelParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEE02728088DC7006EDF3F /* PanelParameters.swift */; };
 		AE0C41055ADEFBB91A73018B /* CarbonKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C4126D4386047C19F3C42 /* CarbonKeys.swift */; };
 		AE0C423FEF1CC69763A92346 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C4463E52394F388D39791 /* Parameters.swift */; };
 		AE0C42FCB8F2F66B47E824C2 /* ParamMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C444703368C0FB0E2C354 /* ParamMenuItem.swift */; };
@@ -24,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A3A793728086FF300F784A7 /* ScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenController.swift; sourceTree = "<group>"; };
+		7A414207280876F300BAE724 /* PanelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelProtocol.swift; sourceTree = "<group>"; };
 		7A6943FD271496C1009DB1BB /* Drawerlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drawerlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A694400271496C1009DB1BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A69440C271496C2009DB1BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -32,6 +37,7 @@
 		7A69441F2714A748009DB1BB /* DrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		7A773BCE2714C77600697D14 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		7AAEA9C827A34212002019E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7ABEE02728088DC7006EDF3F /* PanelParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelParameters.swift; sourceTree = "<group>"; };
 		AE0C4126D4386047C19F3C42 /* CarbonKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarbonKeys.swift; sourceTree = "<group>"; };
 		AE0C420BAE8F7BFD35E70B3F /* HotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
 		AE0C4235D3D1D2CC2FE5483B /* HotKeyWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyWindowController.swift; sourceTree = "<group>"; };
@@ -87,6 +93,9 @@
 				AE0C4126D4386047C19F3C42 /* CarbonKeys.swift */,
 				AE0C420BAE8F7BFD35E70B3F /* HotKey.swift */,
 				7AAEA9C827A34212002019E5 /* Images.xcassets */,
+				7A3A793728086FF300F784A7 /* ScreenController.swift */,
+				7A414207280876F300BAE724 /* PanelProtocol.swift */,
+				7ABEE02728088DC7006EDF3F /* PanelParameters.swift */,
 			);
 			path = Drawerlay;
 			sourceTree = "<group>";
@@ -163,6 +172,7 @@
 				7A773BCF2714C77600697D14 /* DrawView.swift in Sources */,
 				7A694401271496C1009DB1BB /* AppDelegate.swift in Sources */,
 				7A6944202714A748009DB1BB /* DrawViewController.swift in Sources */,
+				7ABEE02828088DC7006EDF3F /* PanelParameters.swift in Sources */,
 				7A69441C27149AEB009DB1BB /* main.swift in Sources */,
 				AE0C45077AEA2E4E33CAA982 /* PanelController.swift in Sources */,
 				AE0C4E9E3ACB546674BF2FC4 /* HotKeyManager.swift in Sources */,
@@ -170,8 +180,10 @@
 				AE0C42FCB8F2F66B47E824C2 /* ParamMenuItem.swift in Sources */,
 				AE0C4D064BD2D9704F230476 /* HotKeyViewController.swift in Sources */,
 				AE0C4905B4113B4C048E4D26 /* HotKeyWindowController.swift in Sources */,
+				7A414208280876F300BAE724 /* PanelProtocol.swift in Sources */,
 				AE0C41055ADEFBB91A73018B /* CarbonKeys.swift in Sources */,
 				AE0C42FDB507D3B37CAFEAD9 /* HotKey.swift in Sources */,
+				7A3A793828086FF300F784A7 /* ScreenController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

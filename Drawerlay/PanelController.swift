@@ -1,20 +1,24 @@
 import AppKit
 
-class PanelController {
+class PanelController: PanelProtocol {
     private let panel: NSPanel
 
-    init() {
+    init(_ screen: NSScreen, _ parameters: PanelParameters) {
         panel = NSPanel(
                 contentRect: NSMakeRect(0, 0, 0, 0),
                 styleMask: [.borderless, .nonactivatingPanel],
                 backing: .buffered,
-                defer: false
+                defer: false,
+                screen: screen
         )
         panel.level = .mainMenu
         panel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
         panel.backgroundColor = NSColor.clear
         panel.ignoresMouseEvents = true
         panel.contentViewController = DrawViewController()
+        setColor(parameters.color)
+        setLineWidth(parameters.lineWidth)
+        setTimeout(parameters.timeout)
     }
 
     func enable() {
