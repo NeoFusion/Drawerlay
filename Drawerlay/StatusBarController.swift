@@ -13,6 +13,7 @@ class StatusBarController {
         statusBar = NSStatusBar.system
         statusBarItem = statusBar.statusItem(withLength: NSStatusItem.squareLength)
         statusBarItem.button?.title = "🌀"
+        statusBarItem.button?.compositingFilter = CIFilter(name: "CIPhotoEffectTonal")
         let statusBarMenu = NSMenu(title: "Drawerlay")
 
         stateMenuItem = NSMenuItem(title: "Enable", action: #selector(AppDelegate.togglePanel), keyEquivalent: "")
@@ -64,11 +65,13 @@ class StatusBarController {
     }
 
     func setEnabledState() {
+        statusBarItem.button?.compositingFilter = nil
         stateMenuItem.title = "Disable"
         stateMenuItem.setStateOn()
     }
 
     func setDisabledState() {
+        statusBarItem.button?.compositingFilter = CIFilter(name: "CIPhotoEffectTonal")
         stateMenuItem.title = "Enable"
         stateMenuItem.setStateOff()
     }
