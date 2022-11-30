@@ -11,12 +11,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         statusBarController = StatusBarController()
-        let parameters = loadUserDefaults()
+        let (hotkey, parameters) = loadUserDefaults()
+        statusBarController.setActiveColor(color: parameters.color)
+        statusBarController.setActiveLineWidth(lineWidth: parameters.lineWidth)
+        statusBarController.setActiveTimeout(timeout: parameters.timeout)
         screenController = ScreenController(parameters)
         HotKeyManager.registerHandlers(
                 onKeyPressed: screenController.activate,
                 onKeyReleased: screenController.deactivate
         )
+        setHotKey(hotkey)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -26,7 +30,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         saveUserDefaults()
     }
 
-    private func loadUserDefaults() -> PanelParameters {
+    private func loadUserDefaults() -> (HotKey, PanelParameters) {
+        var hotKey = Parameters.defaultHotKey
         var parameters = PanelParameters(
                 color: Parameters.defaultColor,
                 lineWidth: Parameters.defaultLineWidth,
@@ -35,11 +40,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let hotKeyCode = defaults.value(forKey: Parameters.hotKeyCodeKey) as? UInt32,
            let hotKeyModifiers = defaults.value(forKey: Parameters.hotKeyModifiersKey) as? UInt32
         {
-            setHotKey(HotKey(code: hotKeyCode, modifiers: hotKeyModifiers))
+            hotKey = HotKey(code: hotKeyCode, modifiers: hotKeyModifiers)
         } else {
             defaults.set(Parameters.defaultHotKey.code, forKey: Parameters.hotKeyCodeKey)
             defaults.set(Parameters.defaultHotKey.modifiers, forKey: Parameters.hotKeyModifiersKey)
-            setHotKey(Parameters.defaultHotKey)
         }
         if let colorName = defaults.value(forKey: Parameters.colorKey) as? String,
            let colorIndex = Parameters.colors.firstIndex(where: { $0.key == colorName })
@@ -47,31 +51,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let color = Parameters.colors[colorIndex].value
             currentParams[Parameters.colorKey] = colorName
             parameters.color = color
-            statusBarController.setActiveColor(color: color)
         } else {
             defaults.set(Parameters.defaultColorName, forKey: Parameters.colorKey)
             currentParams[Parameters.colorKey] = Parameters.defaultColorName
-            statusBarController.setActiveColor(color: Parameters.defaultColor)
         }
         if let lineWidth = defaults.value(forKey: Parameters.lineWidthKey) as? CGFloat {
             currentParams[Parameters.lineWidthKey] = lineWidth
             parameters.lineWidth = lineWidth
-            statusBarController.setActiveLineWidth(lineWidth: lineWidth)
         } else {
             defaults.set(Parameters.defaultLineWidth, forKey: Parameters.lineWidthKey)
             currentParams[Parameters.lineWidthKey] = Parameters.defaultLineWidth
-            statusBarController.setActiveLineWidth(lineWidth: Parameters.defaultLineWidth)
         }
         if let timeout = defaults.value(forKey: Parameters.timeoutKey) as? TimeInterval {
             currentParams[Parameters.timeoutKey] = timeout
             parameters.timeout = timeout
-            statusBarController.setActiveTimeout(timeout: timeout)
         } else {
             defaults.set(Parameters.defaultTimeout, forKey: "timeout")
             currentParams[Parameters.timeoutKey] = Parameters.defaultTimeout
-            statusBarController.setActiveTimeout(timeout: Parameters.defaultTimeout)
         }
-        return parameters
+        return (hotKey, parameters)
     }
 
     private func saveUserDefaults() {
