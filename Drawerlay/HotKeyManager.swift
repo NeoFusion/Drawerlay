@@ -1,4 +1,5 @@
 import Carbon
+import os.log
 
 final class HotKeyManager {
     private static let hotKeyID = EventHotKeyID(
@@ -13,6 +14,8 @@ final class HotKeyManager {
 
     private static var onKeyPressed: Handler?
     private static var onKeyReleased: Handler?
+
+    private static let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "hotKey")
 
     typealias Handler = () -> Void
 
@@ -35,7 +38,7 @@ final class HotKeyManager {
                 &eventHotKey
         )
         guard error == noErr, eventHotKey != nil else {
-            print("RegisterEventHotKey error")
+            os_log("RegisterEventHotKey error", log: log, type: .error)
             return
         }
     }
@@ -54,7 +57,7 @@ final class HotKeyManager {
                 &eventHandler
         )
         guard error == noErr, eventHandler != nil else {
-            print("InstallEventHandler error")
+            os_log("InstallEventHandler error", log: log, type: .error)
             return
         }
     }
@@ -62,7 +65,7 @@ final class HotKeyManager {
     static func removeEventHandler() {
         if eventHandler != nil {
             if RemoveEventHandler(eventHandler) != noErr {
-                print("RemoveEventHandler error")
+                os_log("RemoveEventHandler error", log: log, type: .error)
             }
         }
     }
@@ -70,7 +73,7 @@ final class HotKeyManager {
     static func unregisterHotKey() {
         if eventHotKey != nil {
             if UnregisterEventHotKey(eventHotKey) != noErr {
-                print("UnregisterEventHotKey error")
+                os_log("UnregisterEventHotKey error", log: log, type: .error)
             }
         }
     }
